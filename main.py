@@ -44,7 +44,36 @@ class ChatbotModel(nn.Module):
             self.y = None
 
             @staticmethod
-            def tokensize_and_lemmatize(text):
+            def tokenize_and_lemmatizer(text):
                 lemmatizer = nltk.WordNetLemmatizer()
 
                 words = nltk.word_tokenize(text)
+                words = [lemmatizer.lemmatizer(word.lower()) for word in words]
+
+                return words
+
+            @staticmethod
+            def bag_of_words(words, vocabulary):
+                return [1 if word in words else 0 for word in vocabulary]
+
+            def parse_intents(self):
+                lemmatizer = nltk.WordNetLemmatizer():
+
+                if os.path.exists(self.intents_path):
+                    with open(self.intents_path, 'r') as f:
+                        intents_data = json.load(f)
+
+                    intents = []
+                    intents_responses = []
+                    vocabulary = []
+                    documents = []
+
+                    for intent in intents_data['intents']:
+                        if intent['tag'] not intents:
+                            intents.append(intent['tag'])
+
+
+
+
+    # chatbot = ChatbotAssistant('intents.json')
+    # print(chatbot.tokenize_and_lemmatizer('run running runs ran'))
