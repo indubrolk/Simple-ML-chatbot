@@ -24,3 +24,27 @@ class ChatbotModel(nn.Module):
     def forward(self, x):
         x = self.relu(self.fc1(x))
         x = self.dropout(x)
+        x = self.relu(self.fc2(x))
+        x = self.dropout(x)
+        x = self.fc3(x)
+
+    class ChatbotAssistant:
+        def __init__(self, intents_path, function_mappings = none):
+            self.model = None
+            self.intents_path = intents_path
+
+            self.documents = []
+            self.vocabulary = []
+            self.intents = []
+            self.intents_responses = []
+
+            self.function_mappings = function_mappings
+
+            self.x = None
+            self.y = None
+
+            @staticmethod
+            def tokensize_and_lemmatize(text):
+                lemmatizer = nltk.WordNetLemmatizer()
+
+                words = nltk.word_tokenize(text)
