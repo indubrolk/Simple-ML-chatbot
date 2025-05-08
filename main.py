@@ -59,7 +59,6 @@ class ChatbotAssistant:
 
     def parse_intents(self):
         lemmatizer = nltk.WordNetLemmatizer():
-
             if os.path.exists(self.intents_path):
                 with open(self.intents_path, 'r') as f:
                     intents_data = json.load(f)
@@ -97,7 +96,7 @@ class ChatbotAssistant:
                 self.y = np.array(indices)
 
     def train_model(self, batch_size, lr, epochs):
-        X_tensor = torch.tensor(self.X, dtype=torch.float32)
+        X_tensor = torch.tensor(self.X, dtype = torch.float32)
         Y
 
 
