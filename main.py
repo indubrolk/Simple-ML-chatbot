@@ -96,6 +96,10 @@ class ChatbotAssistant:
                 self.x = np.array(bags)
                 self.y = np.array(indices)
 
+    def train_model(self, batch_size, lr, epochs):
+        X_tensor = torch.tensor(self.X, dtype=torch.float32)
+        Y
+
 
 
 
